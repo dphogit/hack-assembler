@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Assembler",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Assembler/bin/Debug/net8.0/Assembler.dll",
+      "args": ["${workspaceFolder}/Programs/${input:asmProgram}"],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "asmProgram",
+      "type": "pickString",
+      "description": "Select one of the programs to be passed as input to the assembler",
+      "options": [
+        "Add.asm",
+        "Max.asm",
+        "MaxL.asm",
+        "Pong.asm",
+        "PongL.asm",
+        "Rect.asm",
+        "RectL.asm"
+      ],
+      "default": "Add.asm"
+    }
+  ]
+}
