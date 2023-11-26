@@ -4,7 +4,7 @@ public class ComputeCommand(string asmCommand) : IAsmCommand
 {
     public bool IsTranslatable => true;
 
-    public string Translate()
+    public string Translate(SymbolTable symbolTable)
     {
         string comp;
         string dest = "null";

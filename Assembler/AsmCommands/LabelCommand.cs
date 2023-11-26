@@ -1,16 +1,17 @@
 namespace Assembler.AsmCommands;
 
+// L-Command: (Xxx) where Xxx is a symbol
 public class LabelCommand(string asmCommand) : IAsmCommand
 {
     public bool IsTranslatable => false;
 
-    public string Translate()
+    public string Translate(SymbolTable? symbolTable = null)
     {
         throw new NotImplementedException();
     }
 
     public string GetSymbol()
     {
-        return asmCommand[1..^1];   // In the form of (symbol) - remove the parentheses.
+        return asmCommand[1..^1];
     }
 }

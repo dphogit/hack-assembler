@@ -6,9 +6,30 @@ public class AddressingCommand(string asmCommand) : IAsmCommand
 
     public string Translate()
     {
-        // A-Command: @Xxx where Xxx is either a symbol or a decimal number
+        throw new NotSupportedException("Use Translate(SymbolTable) instead.");
+    }
+
+    public string Translate(SymbolTable symbolTable)
+    {
         string symbol = asmCommand[1..];
-        int address = ushort.Parse(symbol);
-        return Convert.ToString(address, 2).PadLeft(16, '0');
+        bool isDecimalAddress = ushort.TryParse(symbol, out ushort address);
+        if (isDecimalAddress)
+        {
+            return Convert.ToString(address, 2).PadLeft(16, '0');
+        }
+        if (symbolTable.Contains(symbol))
+        {
+            return Convert.ToString(symbolTable.GetAddress(symbol), 2).PadLeft(16, '0');
+        }
+        else
+        {
+            symbolTable.AddVariable(symbol);
+            return Convert.ToString(symbolTable.GetAddress(symbol), 2).PadLeft(16, '0');
+        }
+    }
+
+    public string GetSymbol()
+    {
+        return asmCommand[1..];
     }
 }

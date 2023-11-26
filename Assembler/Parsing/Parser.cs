@@ -2,10 +2,9 @@ using Assembler.AsmCommands;
 
 namespace Assembler.Parsing;
 
-public class Parser(TextReader reader)
+public class Parser(StreamReader reader)
 {
-    private readonly TextReader reader = reader;
-    public bool HasMoreCommands { get; private set; } = true;
+    private readonly StreamReader reader = reader;
 
     public IAsmCommand? Advance()
     {
@@ -16,7 +15,12 @@ public class Parser(TextReader reader)
             if (line == "") continue;
             return AsmCommandFactory.CreateCommand(line);
         }
-        HasMoreCommands = false;
         return null;
+    }
+
+    public void Reset()
+    {
+        reader.DiscardBufferedData();
+        reader.BaseStream.Seek(0, SeekOrigin.Begin);
     }
 }

@@ -2,9 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
-      "type": "dotnet",
-      "task": "build",
+      "label": "build-assembler",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/Assembler/Assembler.csproj"],
       "problemMatcher": ["$msCompile"],
       "group": "build"
     },

@@ -5,7 +5,7 @@
       "name": "Assembler",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
+      "preLaunchTask": "build-assembler",
       "program": "${workspaceFolder}/Assembler/bin/Debug/net8.0/Assembler.dll",
       "args": ["${workspaceFolder}/Programs/${input:asmProgram}"],
       "cwd": "${workspaceFolder}",

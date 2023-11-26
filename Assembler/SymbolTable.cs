@@ -55,9 +55,9 @@ public class SymbolTable
         table.Add(symbol, address);
     }
 
-    public void Contains(string symbol)
+    public bool Contains(string symbol)
     {
-        table.ContainsKey(symbol);
+        return table.ContainsKey(symbol);
     }
 
     public int GetAddress(string symbol)
