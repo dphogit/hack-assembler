@@ -7,6 +7,16 @@
       "task": "build",
       "problemMatcher": ["$msCompile"],
       "group": "build"
+    },
+    {
+      "label": "unittest",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "test",
+        "${workspaceFolder}/Assembler.UnitTests/Assembler.UnitTests.csproj"
+      ],
+      "problemMatcher": "$msCompile"
     }
   ]
 }

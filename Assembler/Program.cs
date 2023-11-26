@@ -1,10 +1,10 @@
-﻿using Assembler.FileHandling;
+﻿using Assembler.Parsing;
 
 namespace Assembler;
 
-class Program
+public class Program
 {
-    static int Main(string[] args)
+    public static int Main(string[] args)
     {
         if (args.Length != 1)
         {
@@ -28,34 +28,34 @@ class Program
 
         string outputFilePath = Path.ChangeExtension(inputFilePath, ".hack");
 
-        Assemble(inputFilePath, outputFilePath);
+        using TextReader reader = new StreamReader(inputFilePath);
+        using TextWriter writer = new StreamWriter(outputFilePath);
+
+        Assemble(reader, writer);
 
         return 0;
     }
 
-    static void PrintUsage()
+    public static void Assemble(TextReader reader, TextWriter writer)
     {
-        Console.WriteLine("\nUsage: dotnet run <INPUT>");
-        Console.WriteLine("\nINPUT:");
-        Console.WriteLine("    Path to an .asm file to assemble.\n");
-    }
-
-    static void Assemble(string inputFilePath, string outputFilePath)
-    {
-        using StreamReader streamReader = new(inputFilePath);
-        using StreamWriter streamWriter = new(outputFilePath);
-
-        Parser parser = new(streamReader);
+        Parser parser = new(reader);
 
         var asmCommand = parser.Advance();
         while (asmCommand is not null)
         {
             string binaryInstruction = asmCommand.Translate();
-            streamWriter.WriteLine(binaryInstruction);
+            writer.WriteLine(binaryInstruction);
             asmCommand = parser.Advance();
         }
 
-        streamReader.Close();
-        streamWriter.Close();
+        reader.Close();
+        writer.Close();
+    }
+
+    static void PrintUsage()
+    {
+        Console.WriteLine("\nUsage: dotnet run <FILE_PATH>");
+        Console.WriteLine("\nArguments:");
+        Console.WriteLine("  <FILE_PATH> The path to an .asm file to translate from assembly to binary instructions.\n");
     }
 }

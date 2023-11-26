@@ -11,6 +11,17 @@
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
       "console": "internalConsole"
+    },
+    {
+      "name": "Unit Tests",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "unittest",
+      "program": "${workspaceFolder}/Assembler.UnitTests/bin/Debug/net8.0/Assembler.UnitTests.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole"
     }
   ],
   "inputs": [

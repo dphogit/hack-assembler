@@ -1,6 +1,6 @@
 using Assembler.AsmCommands;
 
-namespace Assembler.FileHandling;
+namespace Assembler.Parsing;
 
 /// <summary>
 /// Reads assembly language commands and parses them, creating commands (<see cref="IAsmCommand"/>) each time the
