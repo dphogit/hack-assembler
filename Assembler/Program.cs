@@ -1,4 +1,5 @@
-﻿using Assembler.Parsing;
+﻿using Assembler.AsmCommands;
+using Assembler.Parsing;
 
 namespace Assembler;
 
@@ -36,15 +37,43 @@ public class Program
         return 0;
     }
 
-    public static void Assemble(TextReader reader, TextWriter writer)
+    public static SymbolTable FirstPass(TextReader reader)
     {
         Parser parser = new(reader);
+        SymbolTable symbolTable = new();
+
+        int instructionAddress = 0;
 
         var asmCommand = parser.Advance();
         while (asmCommand is not null)
         {
-            string binaryInstruction = asmCommand.Translate();
-            writer.WriteLine(binaryInstruction);
+            if (asmCommand is LabelCommand labelCommand)
+            {
+                string symbol = labelCommand.GetSymbol();
+                symbolTable.AddEntry(symbol, instructionAddress);
+            }
+            else
+            {
+                instructionAddress++;
+            }
+            asmCommand = parser.Advance();
+        }
+
+        return symbolTable;
+    }
+
+    public static void Assemble(TextReader reader, TextWriter writer)
+    {
+        // Second pass - TODO Rename this method and update tests accordingly
+        Parser parser = new(reader);
+        IAsmCommand? asmCommand = parser.Advance();
+        while (asmCommand is not null)
+        {
+            if (asmCommand.IsTranslatable)
+            {
+                string binaryInstruction = asmCommand.Translate();
+                writer.WriteLine(binaryInstruction);
+            }
             asmCommand = parser.Advance();
         }
 

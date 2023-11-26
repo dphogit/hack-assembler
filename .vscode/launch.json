@@ -13,11 +13,11 @@
       "console": "internalConsole"
     },
     {
-      "name": "Unit Tests",
+      "name": "Integration Tests",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "unittest",
-      "program": "${workspaceFolder}/Assembler.UnitTests/bin/Debug/net8.0/Assembler.UnitTests.dll",
+      "preLaunchTask": "integration-tests",
+      "program": "${workspaceFolder}/Assembler.IntegrationTests/bin/Debug/net8.0/Assembler.IntegrationTests.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,

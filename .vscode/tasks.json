@@ -9,12 +9,12 @@
       "group": "build"
     },
     {
-      "label": "unittest",
+      "label": "integration-tests",
       "command": "dotnet",
       "type": "process",
       "args": [
         "test",
-        "${workspaceFolder}/Assembler.UnitTests/Assembler.UnitTests.csproj"
+        "${workspaceFolder}/Assembler.IntegrationTests/Assembler.IntegrationTests.csproj"
       ],
       "problemMatcher": "$msCompile"
     }

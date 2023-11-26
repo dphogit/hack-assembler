@@ -2,6 +2,8 @@ namespace Assembler.AsmCommands;
 
 public class ComputeCommand(string asmCommand) : IAsmCommand
 {
+    public bool IsTranslatable => true;
+
     public string Translate()
     {
         string comp;

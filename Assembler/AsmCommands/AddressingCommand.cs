@@ -2,6 +2,8 @@ namespace Assembler.AsmCommands;
 
 public class AddressingCommand(string asmCommand) : IAsmCommand
 {
+    public bool IsTranslatable => true;
+
     public string Translate()
     {
         // A-Command: @Xxx where Xxx is either a symbol or a decimal number
