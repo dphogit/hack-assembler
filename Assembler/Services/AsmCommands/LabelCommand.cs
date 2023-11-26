@@ -1,4 +1,6 @@
-namespace Assembler.AsmCommands;
+using Assembler.Models;
+
+namespace Assembler.Services.AsmCommands;
 
 // L-Command: (Xxx) where Xxx is a symbol
 public class LabelCommand(string asmCommand) : IAsmCommand

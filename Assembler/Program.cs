@@ -1,4 +1,6 @@
-﻿namespace Assembler;
+﻿using Assembler.Services;
+
+namespace Assembler;
 
 public class Program
 {

@@ -1,13 +1,10 @@
-namespace Assembler.AsmCommands;
+using Assembler.Models;
+
+namespace Assembler.Services.AsmCommands;
 
 public class AddressingCommand(string asmCommand) : IAsmCommand
 {
     public bool IsTranslatable => true;
-
-    public string Translate()
-    {
-        throw new NotSupportedException("Use Translate(SymbolTable) instead.");
-    }
 
     public string Translate(SymbolTable symbolTable)
     {

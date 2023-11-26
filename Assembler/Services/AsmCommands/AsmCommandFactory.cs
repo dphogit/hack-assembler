@@ -1,4 +1,4 @@
-namespace Assembler.AsmCommands;
+namespace Assembler.Services.AsmCommands;
 
 public class AsmCommandFactory
 {

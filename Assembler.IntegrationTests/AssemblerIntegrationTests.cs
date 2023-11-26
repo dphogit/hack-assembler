@@ -1,4 +1,5 @@
 using System.Text;
+using Assembler.Services;
 
 namespace Assembler.IntegrationTests;
 
@@ -26,14 +27,22 @@ public class AssemblerIntegrationTests
         }
     }
 
+    // Ensures consistent line endings
+    private static void AssertBinaryContents(string expected, string actual)
+    {
+        expected = expected.Replace("\r\n", "\n");
+        actual = actual.Replace("\r\n", "\n");
+        Assert.Equal(expected, actual);
+    }
+
     [Fact]
     public void Assemble_NoSymbols_TranslatesToBinary()
     {
         // Arrange
         string addAsmProgram = """
-        // This file is part of www.nand2tetris.org 
+        // This file is part of www.nand2tetris.org
         // and the book \"The Elements of Computing Systems\" by Nisan and
-        // Schocken, MIT Press. 
+        // Schocken, MIT Press.
         // File name: projects/06/add/Add.asm
 
         // Computes R0 = 2 + 3 (R0 refers to RAM[0]).
@@ -44,7 +53,7 @@ public class AssemblerIntegrationTests
         D=D+A
         @0
         M=D
-        
+
         """;
 
         string expectedBinary = """
@@ -64,6 +73,6 @@ public class AssemblerIntegrationTests
 
         // Assert
         string actualBinary = readerWriter.GetWriterString();
-        Assert.Equal(expectedBinary, actualBinary);
+        AssertBinaryContents(expectedBinary, actualBinary);
     }
 }

@@ -1,4 +1,4 @@
-namespace Assembler.AsmCommands;
+namespace Assembler.Services;
 
 /// <summary>
 /// Contains all logic for translating assembly mnemonic strings to binary strings.

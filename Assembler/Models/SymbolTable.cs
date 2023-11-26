@@ -1,4 +1,4 @@
-namespace Assembler;
+namespace Assembler.Models;
 
 /// <summary>
 /// The symbol table holds the mapping between symbolic labels in the assembly file to numeric addresses, required

@@ -1,4 +1,6 @@
-namespace Assembler.AsmCommands;
+using Assembler.Models;
+
+namespace Assembler.Services.AsmCommands;
 
 public class ComputeCommand(string asmCommand) : IAsmCommand
 {

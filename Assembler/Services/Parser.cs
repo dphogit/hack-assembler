@@ -1,6 +1,6 @@
-using Assembler.AsmCommands;
+using Assembler.Services.AsmCommands;
 
-namespace Assembler.Parsing;
+namespace Assembler.Services;
 
 public class Parser(StreamReader reader)
 {

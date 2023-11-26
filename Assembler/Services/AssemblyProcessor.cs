@@ -1,7 +1,7 @@
-using Assembler.AsmCommands;
-using Assembler.Parsing;
+using Assembler.Models;
+using Assembler.Services.AsmCommands;
 
-namespace Assembler;
+namespace Assembler.Services;
 
 public class AssemblyProcessor(StreamReader reader, StreamWriter writer)
 {
